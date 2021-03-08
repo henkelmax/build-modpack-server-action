@@ -20,7 +20,9 @@ The path to the server zip.
 
 ## Example usage
 
+``` yml
 uses: henkelmax/build-modpack-server-action@v1.0.0
 with:
   modpack-path: './modpack.zip'
   output-path: './modpack-server.zip'
+```
