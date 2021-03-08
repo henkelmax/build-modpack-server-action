@@ -3,8 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "Max Henkel",
+  "scripts": {
+    "build": "ncc build index.js --license licenses.txt"
+  },
   "dependencies": {
     "@actions/core": "^1.2.6",
     "curseforge-modpack-server-generator": "https://github.com/henkelmax/curseforge-modpack-server-generator.git"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.27.0"
   }
 }

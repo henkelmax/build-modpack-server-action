@@ -14,4 +14,4 @@ outputs:
     description: 'The path to the server zip'
 runs:
   using: 'node12'
-  main: 'index.js'
+  main: 'dist/index.js'
