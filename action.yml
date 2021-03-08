@@ -1,0 +1,17 @@
+name: 'Build Modpack Server'
+description: 'Build a server from a modpack zip'
+inputs:
+  modpack-path:
+    description: 'The path to the modpack zip'
+    required: true
+    default: './modpack.zip'
+  output-path:
+    description: 'The path where the server should be stored'
+    required: true
+    default: './modpack-server.zip'
+outputs:
+  path:
+    description: 'The path to the server zip'
+runs:
+  using: 'node12'
+  main: 'index.js'
