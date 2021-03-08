@@ -15164,6 +15164,7 @@ module.exports = __nccwpck_require__(7836);
 /***/ 7836:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
+/* module decorator */ module = __nccwpck_require__.nmd(module);
 // @ts-check
 const fs = __nccwpck_require__(5630);
 const path = __nccwpck_require__(5622);
@@ -15252,12 +15253,12 @@ module.exports = async function genertateServer(modpackZip, destination) {
         view.linuxDownloadModScript += `wget -O mods/${file.fileName} ${file.downloadUrl}\n`;
     }
 
-    renderFile('./data/start_server.bat', dir, view);
-    renderFile('./data/start_server.sh', dir, view);
-    renderFile('./data/install.bat', dir, view);
-    renderFile('./data/install.sh', dir, view);
-    renderFile('./data/eula.txt', dir, view);
-    renderFile('./data/server.properties', dir, view);
+    renderFile('../data/start_server.bat', dir, view);
+    renderFile('../data/start_server.sh', dir, view);
+    renderFile('../data/install.bat', dir, view);
+    renderFile('../data/install.sh', dir, view);
+    renderFile('../data/eula.txt', dir, view);
+    renderFile('../data/server.properties', dir, view);
 
     console.log('Generating mod list');
 
@@ -15285,11 +15286,12 @@ function removeTempFolder(dir) {
 }
 
 function renderFile(file, destination, view) {
-    console.log(`Rendering file '${file}'`);
-    const fileContents = fs.readFileSync(file, 'utf8');
+    const filePath = path.resolve(module.path, file);
+    console.log(`Rendering file '${filePath}'`);
+    const fileContents = fs.readFileSync(filePath, 'utf8');
     const rendered = Mustache.render(fileContents, view);
-    fs.writeFileSync(path.join(destination, path.basename(file)), rendered, { encoding: 'utf8' });
-    console.log(`Saved file '${file}'`);
+    fs.writeFileSync(path.join(destination, path.basename(filePath)), rendered, { encoding: 'utf8' });
+    console.log(`Saved file '${filePath}'`);
 }
 
 function createTempDir() {
@@ -36256,8 +36258,8 @@ module.exports = require("zlib");;
 /******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			// no module.id needed
-/******/ 			// no module.loaded needed
+/******/ 			id: moduleId,
+/******/ 			loaded: false,
 /******/ 			exports: {}
 /******/ 		};
 /******/ 	
@@ -36269,6 +36271,9 @@ module.exports = require("zlib");;
 /******/ 		} finally {
 /******/ 			if(threw) delete __webpack_module_cache__[moduleId];
 /******/ 		}
+/******/ 	
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -36312,6 +36317,15 @@ module.exports = require("zlib");;
 /******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/node module decorator */
+/******/ 	(() => {
+/******/ 		__nccwpck_require__.nmd = (module) => {
+/******/ 			module.paths = [];
+/******/ 			if (!module.children) module.children = [];
+/******/ 			return module;
 /******/ 		};
 /******/ 	})();
 /******/ 	
