@@ -134,7 +134,7 @@ crc32-stream@^4.0.1:
 
 "curseforge-modpack-server-generator@https://github.com/henkelmax/curseforge-modpack-server-generator.git":
   version "1.0.0"
-  resolved "https://github.com/henkelmax/curseforge-modpack-server-generator.git#a841ef20804c3a969283093bd57efe844c81efb6"
+  resolved "https://github.com/henkelmax/curseforge-modpack-server-generator.git#1a35709918c3e74342771f624dbc5e8892cae649"
   dependencies:
     adm-zip "^0.5.2"
     archiver "^5.2.0"
