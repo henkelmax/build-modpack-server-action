@@ -15252,12 +15252,12 @@ module.exports = async function genertateServer(modpackZip, destination) {
         view.linuxDownloadModScript += `wget -O mods/${file.fileName} ${file.downloadUrl}\n`;
     }
 
-    renderFile('../data/start_server.bat', dir, view);
-    renderFile('../data/start_server.sh', dir, view);
-    renderFile('../data/install.bat', dir, view);
-    renderFile('../data/install.sh', dir, view);
-    renderFile('../data/eula.txt', dir, view);
-    renderFile('../data/server.properties', dir, view);
+    renderFile(__nccwpck_require__.ab + "start_server.bat", dir, view);
+    renderFile(__nccwpck_require__.ab + "start_server.sh", dir, view);
+    renderFile(__nccwpck_require__.ab + "install.bat", dir, view);
+    renderFile(__nccwpck_require__.ab + "install.sh", dir, view);
+    renderFile(__nccwpck_require__.ab + "eula.txt", dir, view);
+    renderFile(__nccwpck_require__.ab + "server.properties", dir, view);
 
     console.log('Generating mod list');
 
@@ -15285,12 +15285,11 @@ function removeTempFolder(dir) {
 }
 
 function renderFile(file, destination, view) {
-    const filePath = path.resolve(__dirname, file);
-    console.log(`Rendering file '${filePath}'`);
-    const fileContents = fs.readFileSync(filePath, 'utf8');
+    console.log(`Rendering file '${file}'`);
+    const fileContents = fs.readFileSync(file, 'utf8');
     const rendered = Mustache.render(fileContents, view);
-    fs.writeFileSync(path.join(destination, path.basename(filePath)), rendered, { encoding: 'utf8' });
-    console.log(`Saved file '${filePath}'`);
+    fs.writeFileSync(path.join(destination, path.basename(file)), rendered, { encoding: 'utf8' });
+    console.log(`Saved file '${file}'`);
 }
 
 function createTempDir() {
